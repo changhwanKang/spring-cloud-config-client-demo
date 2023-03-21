@@ -1,0 +1,31 @@
+
+
+cloud:
+  aws:
+    sqs:
+      enabled: true
+spring:
+  config:
+    import: "optional:configserver:http://localhost:8888"
+    name: "test-service"
+
+#  rabbitmq:
+#    host: b-3d5233e6-7510-449d-a468-43c15630c334.mq.ap-northeast-2.amazonaws.com
+#    port: 5671
+#    username: master
+#    password: master123456789
+#    ssl:
+#      enabled: true
+  cloud:
+    config:
+      watch:
+        enabled: false
+        initialDelay: 5000
+        delay: 10000
+      fail-fast: true
+      retry:
+        initial-interval: 1000
+        max-attempts: 5
+        multiplier: 1.1
+      request-connect-timeout: 2000
+      request-read-timeout: 10000
